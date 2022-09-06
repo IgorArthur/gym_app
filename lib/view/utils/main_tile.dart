@@ -31,18 +31,18 @@ class MainTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
+    return TextButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+      ),
+      onPressed: () {
         onTap?.call();
-        
+
         clickable ? Navigator.of(context).pushNamed('/train_page') : null;
       },
       child: Container(
         width: width,
         height: height,
-        margin: EdgeInsets.symmetric(
-          vertical: (0.1 * height),
-        ),
         padding: EdgeInsets.symmetric(
           horizontal: (0.1 * width),
           vertical: (0.14 * height),
@@ -56,18 +56,14 @@ class MainTile extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title).subtitle(),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (0.04 * height),
-                    bottom: (0.1 * height),
-                  ),
-                  child: Text(subtitle).body2(
-                    _getSecondaryColor(colorIndex),
-                  ),
+                SizedBox(
+                  width: 0.5 * width,
+                  child: Text(title).subtitle(),
                 ),
                 Container(
+                  margin: EdgeInsets.only(bottom: 0.07 * height),
                   padding: EdgeInsets.symmetric(
                     horizontal: (0.025 * width),
                   ),
@@ -82,6 +78,7 @@ class MainTile extends StatelessWidget {
                       Icon(
                         Icons.timer,
                         size: 0.057 * width,
+                        color: AppColors.neutral200,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 0.025 * width),

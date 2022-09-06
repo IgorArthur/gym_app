@@ -15,6 +15,7 @@ dependencies:
   get: ^4.6.5
   intl: ^0.17.0
   carousel_slider: ^4.1.1
+  top_modal_sheet: ^2.0.0
 
 dev_dependencies:
   flutter_test:

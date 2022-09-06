@@ -2,12 +2,14 @@ class TrainModel {
   TrainModel({
     required this.title,
     required this.type,
+    required this.group,
     required this.time,
     required this.exerciseList,
   });
 
   String title;
   String type;
+  int group;
   int time;
   List<ExerciseModel> exerciseList;
 }

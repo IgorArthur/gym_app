@@ -43,12 +43,18 @@ class TrainPage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(
+            TextButton(
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+              ),
               child: Padding(
                 padding: EdgeInsets.only(left: 8.w),
-                child: const Icon(Icons.arrow_back_ios),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: AppColors.neutral200,
+                ),
               ),
-              onTap: () {
+              onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
@@ -68,6 +74,7 @@ class TrainPage extends StatelessWidget {
                   child: Icon(
                     Icons.face,
                     size: 8.w,
+                    color: AppColors.neutral200,
                   ),
                 ),
               ),

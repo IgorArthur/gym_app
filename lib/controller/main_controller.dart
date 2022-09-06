@@ -8,47 +8,95 @@ class MainController extends GetxController {
     _getInfo();
   }
 
+  int currentDayIndex = 0;
+  String currentDayName = '';
+
+  TrainModel aquecimento = TrainModel(
+    title: 'Aquecimento',
+    type: 'Esteira ou bicicleta',
+    group: 0,
+    time: 5,
+    exerciseList: [],
+  );
+
+  List<TrainModel> trainList = <TrainModel>[];
+
   void _getInfo() {
     final today = DateFormat('EEEE').format(DateTime.now());
 
     switch (today) {
       case 'Monday':
-        currentDay = 1;
-        trainList.add(mondayTrain);
+        currentDayIndex = 1;
+        currentDayName = 'Segunda-feira';
+        trainList = List.from([aquecimento, mondayTrain]);
         break;
       case 'Tuesday':
-        currentDay = 2;
-        trainList.add(tuesdayTrain);
+        currentDayIndex = 2;
+        currentDayName = 'Terça-feira';
+        trainList = List.from([aquecimento, tuesdayTrain]);
         break;
       case 'Wednesday':
-        currentDay = 3;
-        trainList.add(wednesdayTrain);
+        currentDayIndex = 3;
+        currentDayName = 'Quarta-feira';
+        trainList = List.from([aquecimento, wednesdayTrain]);
         break;
       case 'Thursday':
-        currentDay = 4;
-        trainList.add(thursdayTrain);
+        currentDayIndex = 4;
+        currentDayName = 'Quinta-feira';
+        trainList = List.from([aquecimento, thursdayTrain]);
         break;
       case 'Friday':
-        currentDay = 5;
-        trainList.add(fridayTrain);
+        currentDayIndex = 5;
+        currentDayName = 'Sexta-feira';
+        trainList = List.from([aquecimento, fridayTrain]);
         break;
       case 'Saturday':
-        currentDay = 6;
+        currentDayIndex = 6;
+        currentDayName = 'Sábado';
+        trainList = List.from([]);
         break;
       default:
-        currentDay = 0;
+        currentDayIndex = 0;
+        currentDayName = 'Domingo';
+        trainList = List.from([]);
         break;
     }
   }
 
-  int currentDay = 0;
+  void changeCurrentDay(int newDay) {
+    currentDayIndex = newDay;
 
-  List<TrainModel> trainList = <TrainModel>[
-    TrainModel(
-      title: 'Aquecimento',
-      type: 'Esteira ou bicicleta',
-      time: 5,
-      exerciseList: [],
-    )
-  ];
+    switch (newDay) {
+      case 1:
+        trainList = List.from([aquecimento, mondayTrain]);
+        currentDayName = 'Segunda-feira';
+        break;
+      case 2:
+        trainList = List.from([aquecimento, tuesdayTrain]);
+        currentDayName = 'Terça-feira';
+        break;
+      case 3:
+        trainList = List.from([aquecimento, wednesdayTrain]);
+        currentDayName = 'Quarta-feira';
+        break;
+      case 4:
+        trainList = List.from([aquecimento, thursdayTrain]);
+        currentDayName = 'Quinta-feira';
+        break;
+      case 5:
+        trainList = List.from([aquecimento, fridayTrain]);
+        currentDayName = 'Sexta-feira';
+        break;
+      case 6:
+        trainList = List.from([]);
+        currentDayName = 'Sábado';
+        break;
+      default:
+        trainList = List.from([]);
+        currentDayName = 'Domingo';
+        break;
+    }
+
+    update();
+  }
 }

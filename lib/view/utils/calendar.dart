@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/controller/main_controller.dart';
 import 'package:gym_app/view/utils/export_utils.dart';
 import 'package:sizer/sizer.dart';
 
 class Calendar extends StatelessWidget {
   const Calendar({
     Key? key,
-    required this.currentDay,
+    required this.controller,
   }) : super(key: key);
 
-  final int currentDay;
+  final MainController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +23,13 @@ class Calendar extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _dayTile(true, false, 'D'),
-                _dayTile(false, false, 'S'),
-                _dayTile(false, false, 'T'),
-                _dayTile(false, false, 'Q'),
-                _dayTile(false, false, 'Q'),
-                _dayTile(false, false, 'S'),
-                _dayTile(false, true, 'S'),
+                _dayTile(true, false, 'D', 0),
+                _dayTile(false, false, 'S', 1),
+                _dayTile(false, false, 'T', 2),
+                _dayTile(false, false, 'Q', 3),
+                _dayTile(false, false, 'Q', 4),
+                _dayTile(false, false, 'S', 5),
+                _dayTile(false, true, 'S', 6),
               ],
             ),
           ),
@@ -37,13 +38,13 @@ class Calendar extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _dayCheck(0, currentDay),
-                _dayCheck(1, currentDay),
-                _dayCheck(2, currentDay),
-                _dayCheck(3, currentDay),
-                _dayCheck(4, currentDay),
-                _dayCheck(5, currentDay),
-                _dayCheck(6, currentDay),
+                _dayCheck(0, controller.currentDayIndex),
+                _dayCheck(1, controller.currentDayIndex),
+                _dayCheck(2, controller.currentDayIndex),
+                _dayCheck(3, controller.currentDayIndex),
+                _dayCheck(4, controller.currentDayIndex),
+                _dayCheck(5, controller.currentDayIndex),
+                _dayCheck(6, controller.currentDayIndex),
               ],
             ),
           )
@@ -56,6 +57,7 @@ class Calendar extends StatelessWidget {
     bool isStart,
     bool isFinal,
     String title,
+    int index,
   ) {
     return Container(
       alignment: Alignment.center,
@@ -74,43 +76,17 @@ class Calendar extends StatelessWidget {
                   )
                 : null,
       ),
-      child: Text(title).subtitle(),
+      child: TextButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+        ),
+        onPressed: () {
+          controller.changeCurrentDay(index);
+        },
+        child: Text(title).subtitle(),
+      ),
     );
   }
-
-//   Widget _dayCheck(int state) {
-//     return Container(
-//       alignment: Alignment.center,
-//       width: 12.w,
-//       child: state == 0
-//           ? Icon(
-//               Icons.close,
-//               size: 3.5.w,
-//               color: AppColors.error100,
-//             )
-//           : state == 1
-//               ? Container(
-//                   height: 2.1.w,
-//                   width: 2.1.w,
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(1.05.w),
-//                     color: AppColors.sucess100,
-//                   ),
-//                 )
-//               : state == 2
-//                   ? Container(
-//                       height: 2.1.w,
-//                       width: 2.1.w,
-//                       decoration: BoxDecoration(
-//                         border:
-//                             Border.all(color: AppColors.hardBlue, width: 1.5),
-//                         borderRadius: BorderRadius.circular(1.05.w),
-//                       ),
-//                     )
-//                   : const SizedBox(),
-//     );
-//   }
-// }
 
   Widget _dayCheck(int index, int currentDay) {
     return Container(

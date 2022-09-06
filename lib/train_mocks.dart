@@ -2,6 +2,7 @@ import 'package:gym_app/model/train_model.dart';
 
 final mondayTrain = TrainModel(
   title: 'Peito e Tríceps',
+  group: 1,
   type: 'Máquina e halteres',
   time: 60,
   exerciseList: [
@@ -67,6 +68,7 @@ final mondayTrain = TrainModel(
 final tuesdayTrain = TrainModel(
   title: 'Quadríceps e Posterior',
   type: 'Máquina',
+  group: 2,
   time: 45,
   exerciseList: [
     ExerciseModel(
@@ -117,6 +119,7 @@ final tuesdayTrain = TrainModel(
 final wednesdayTrain = TrainModel(
   title: 'Costas e Bíceps',
   type: 'Máquina e halteres',
+  group: 3,
   time: 60,
   exerciseList: [
     ExerciseModel(
@@ -181,6 +184,7 @@ final wednesdayTrain = TrainModel(
 final thursdayTrain = TrainModel(
   title: 'Glúteos e Posterior',
   type: 'Máquina e livre',
+  group: 4,
   time: 45,
   exerciseList: [
     ExerciseModel(
@@ -231,6 +235,7 @@ final thursdayTrain = TrainModel(
 final fridayTrain = TrainModel(
   title: 'Ombros e Abdômem',
   type: 'Máquina e livre',
+  group: 1,
   time: 60,
   exerciseList: [
     ExerciseModel(
