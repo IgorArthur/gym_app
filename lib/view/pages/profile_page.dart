@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gym_app/controller/profile_controller.dart';
 import 'package:gym_app/controller/train_controller.dart';
+import 'package:gym_app/view/utils/components/text_field_custom.dart';
 import 'package:gym_app/view/utils/export_utils.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,23 +13,30 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Sizer(
-          builder: (context, orientation, deviceType) {
-            return _handleBody(context);
-          },
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Sizer(
+              builder: (context, orientation, deviceType) {
+                return _handleBody(context);
+              },
+            ),
+          ),
         ),
       ),
     );
   }
 
   Widget _handleBody(BuildContext context) {
-    return GetBuilder<TrainController>(
-      init: TrainController(),
-      builder: (trainController) {
+    return GetBuilder<ProfileController>(
+      init: ProfileController(),
+      builder: (profileController) {
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _photo(context, trainController),
-            _content(trainController),
+            _photo(context, profileController),
+            _content(profileController),
           ],
         );
       },
@@ -36,41 +45,128 @@ class ProfilePage extends StatelessWidget {
 
   Widget _photo(
     BuildContext context,
-    TrainController trainController,
+    ProfileController profileController,
   ) {
-    return Container(
-      alignment: Alignment.center,
-      height: 36.w,
-      width: 36.w,
-      decoration: BoxDecoration(
-        color: AppColors.neutral100,
-        borderRadius: BorderRadius.circular(18.w),
-      ),
-      child: Icon(
-        Icons.face,
-        size: 24.w,
-        color: AppColors.neutral200,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5.h),
+      child: TextButton(
+        onPressed: () {},
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: 48.w,
+              width: 48.w,
+              decoration: BoxDecoration(
+                color: AppColors.neutral100,
+                borderRadius: BorderRadius.circular(24.w),
+              ),
+              child: Icon(
+                Icons.face,
+                size: 32.w,
+                color: AppColors.neutral200,
+              ),
+            ),
+            Container(
+              height: 10.w,
+              width: 10.w,
+              decoration: BoxDecoration(
+                color: AppColors.neutral0,
+                border: Border.all(color: AppColors.neutral200),
+                borderRadius: BorderRadius.circular(5.w),
+              ),
+              child: const Icon(
+                Icons.edit,
+                color: AppColors.neutral200,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 
-  Widget _content(TrainController trainController) {
+  Widget _content(ProfileController profileController) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 5.w),
-      height: 78.h,
-      child: ListView.builder(
-          itemCount: trainController.train.exerciseList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return TrainTile(
-              width: 84.w,
-              height: 8.h,
-              colorIndex: trainController.train.exerciseList[index].group % 5,
-              title: trainController.train.exerciseList[index].title,
-              weight: trainController.train.exerciseList[index].weight,
-              sets: trainController.train.exerciseList[index].sets,
-              reps: trainController.train.exerciseList[index].reps,
-            );
-          }),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextFieldCustom(
+            height: 5.h,
+            width: 70.w,
+            controller: profileController.nameController,
+            label: 'Nome',
+            onChanged: (String value) {
+              profileController.update();
+            },
+            contentPadding: EdgeInsets.only(
+              top: 8.h,
+              right: 4.w,
+              left: 4.w,
+            ),
+          ),
+          TextFieldCustom(
+            height: 5.h,
+            width: 70.w,
+            controller: profileController.ageController,
+            label: 'Idade',
+            onChanged: (String value) {
+              profileController.update();
+            },
+            contentPadding: EdgeInsets.only(
+              top: 8.h,
+              right: 4.w,
+              left: 4.w,
+            ),
+          ),
+          TextFieldCustom(
+            height: 5.h,
+            width: 70.w,
+            controller: profileController.weightController,
+            label: 'Peso',
+            onChanged: (String value) {
+              profileController.update();
+            },
+            contentPadding: EdgeInsets.only(
+              top: 8.h,
+              right: 4.w,
+              left: 4.w,
+            ),
+          ),
+          TextFieldCustom(
+            height: 5.h,
+            width: 70.w,
+            controller: profileController.heightController,
+            label: 'Altura',
+            onChanged: (String value) {
+              profileController.update();
+            },
+            contentPadding: EdgeInsets.only(
+              top: 8.h,
+              right: 4.w,
+              left: 4.w,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 2.h),
+            child: Center(
+              child: TextButton(
+                onPressed: () {},
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.neutral200),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: const Text('Cadastrar treino').header(),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,31 +1,51 @@
-class TrainModel {
-  TrainModel({
-    required this.title,
-    required this.type,
-    required this.group,
-    required this.time,
-    required this.exerciseList,
-  });
+import 'package:hive/hive.dart';
 
-  String title;
-  String type;
-  int group;
-  int time;
-  List<ExerciseModel> exerciseList;
+part 'train_model.g.dart';
+
+@HiveType(typeId: 1)
+class TrainModel extends HiveObject {
+
+  @HiveField(0)
+  late String title;
+
+  @HiveField(1)
+  late String type;
+
+  @HiveField(2)
+  late int group;
+
+  @HiveField(3)
+  late int time;
+
+  @HiveField(4)
+  late List<ExerciseModel> exerciseList;
+
+  bool initialized = false;
 }
 
 class ExerciseModel {
-  ExerciseModel({
-    required this.group,
-    required this.title,
-    required this.weight,
-    required this.sets,
-    required this.reps,
-  });
-
-  int group;
-  String title;
-  double weight;
-  int sets;
-  int reps;
+  late int group;
+  late String title;
+  late double weight;
+  late int sets;
+  late int reps;
 }
+
+// @HiveType(typeId: 2)
+// class ExerciseModel extends HiveObject {
+
+//   @HiveField(0)
+//   late int group;
+
+//   @HiveField(1)
+//   late String title;
+
+//   @HiveField(2)
+//   late double weight;
+
+//   @HiveField(3)
+//   late int sets;
+
+//   @HiveField(4)
+//   late int reps;
+// }

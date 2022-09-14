@@ -114,19 +114,4 @@ class MainTile extends StatelessWidget {
         return AppColors.softYellow;
     }
   }
-
-  Color _getSecondaryColor(int colorIndex) {
-    switch (colorIndex) {
-      case 0:
-        return AppColors.hardBlue;
-      case 1:
-        return AppColors.hardRed;
-      case 2:
-        return AppColors.hardGreen;
-      case 3:
-        return AppColors.hardPurple;
-      default:
-        return AppColors.hardYellow;
-    }
-  }
 }
