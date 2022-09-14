@@ -10,8 +10,6 @@ class ProfileController extends GetxController {
     } else {
       _loadProfile();
     }
-
-    Boxes.getTrain();
   }
 
   final nameController = TextEditingController();
@@ -19,11 +17,15 @@ class ProfileController extends GetxController {
   final weightController = TextEditingController();
   final heightController = TextEditingController();
 
-  ProfileModel profile = ProfileModel();
-  Map<dynamic, ProfileModel> profileMap = <dynamic, ProfileModel>{};
+  ProfileModel? profile;
 
   void _loadProfile() {
-    profile = Boxes.getProfile().toMap()[0]!;
+    profile = Boxes.getProfile().toMap()[0];
+
+    nameController.text = profile?.name ?? '';
+    ageController.text = profile?.age.toString() ?? '';
+    weightController.text = profile?.weight.toString() ?? '';
+    heightController.text = profile?.height.toString() ?? '';
   }
 
   void createProfile() {
@@ -34,6 +36,27 @@ class ProfileController extends GetxController {
       ..height = 0;
     Boxes.getProfile().put(0, profile0);
 
-    profile = Boxes.getProfile().get(0)!;
+    profile = Boxes.getProfile().get(0);
+
+    nameController.text = profile?.name ?? '';
+    ageController.text = profile?.age.toString() ?? '';
+    weightController.text = profile?.weight.toString() ?? '';
+    heightController.text = profile?.height.toString() ?? '';
+  }
+
+  void putInfo() { 
+    var profile0 = ProfileModel()
+      ..name = nameController.text
+      ..age = int.parse(ageController.text)
+      ..weight = double.parse(weightController.text)
+      ..height = double.parse(heightController.text);
+    Boxes.getProfile().put(0, profile0);
+
+    profile = Boxes.getProfile().get(0);
+
+    nameController.text = profile?.name ?? '';
+    ageController.text = profile?.age.toString() ?? '';
+    weightController.text = profile?.weight.toString() ?? '';
+    heightController.text = profile?.height.toString() ?? '';
   }
 }

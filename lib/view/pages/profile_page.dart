@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gym_app/controller/profile_controller.dart';
-import 'package:gym_app/controller/train_controller.dart';
 import 'package:gym_app/view/utils/components/text_field_custom.dart';
 import 'package:gym_app/view/utils/export_utils.dart';
 import 'package:sizer/sizer.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
+  void dispose() {
+    super.dispose();
+
+    Get.find<ProfileController>().putInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
