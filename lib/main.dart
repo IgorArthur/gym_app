@@ -1,14 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:gym_app/controller/main_controller.dart';
-import 'package:gym_app/controller/profile_controller.dart';
-import 'package:gym_app/model/profile_model.dart';
-import 'package:gym_app/model/train_model.dart';
-import 'package:gym_app/view/pages/hello_page.dart';
-import 'package:gym_app/view/pages/profile_page.dart';
-import 'package:gym_app/view/pages/train_page.dart';
-import 'package:gym_app/view/utils/boxes.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:gym_app/export.dart';
 
 void main() async {
   await Hive.initFlutter();

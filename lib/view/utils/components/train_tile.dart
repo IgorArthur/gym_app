@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gym_app/view/utils/export_utils.dart';
+import 'package:gym_app/export.dart';
 
 class TrainTile extends StatelessWidget {
   const TrainTile({

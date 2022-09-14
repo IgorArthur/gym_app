@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'package:google_fonts/google_fonts.dart';
-import 'package:gym_app/view/utils/export_utils.dart';
-import 'package:sizer/sizer.dart';
+import 'package:gym_app/export.dart';
 
 extension AppFonts on Text {
 

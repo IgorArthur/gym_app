@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
-import 'package:gym_app/model/train_model.dart';
-import 'package:gym_app/view/utils/boxes.dart';
+import 'package:gym_app/export.dart';
 import 'package:intl/intl.dart';
 
 class MainController extends GetxController {
@@ -65,7 +63,6 @@ class MainController extends GetxController {
         break;
     }
 
-    
     update();
   }
 

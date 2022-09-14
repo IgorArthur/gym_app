@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:gym_app/controller/profile_controller.dart';
-import 'package:gym_app/view/utils/components/text_field_custom.dart';
-import 'package:gym_app/view/utils/export_utils.dart';
-import 'package:sizer/sizer.dart';
+import 'package:gym_app/export.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

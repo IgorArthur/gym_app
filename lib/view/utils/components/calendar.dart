@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gym_app/controller/main_controller.dart';
-import 'package:gym_app/view/utils/export_utils.dart';
-import 'package:sizer/sizer.dart';
+import 'package:gym_app/export.dart';
 
 class Calendar extends StatelessWidget {
   const Calendar({

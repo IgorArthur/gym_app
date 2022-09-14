@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:gym_app/controller/main_controller.dart';
-import 'package:gym_app/controller/profile_controller.dart';
-import 'package:gym_app/controller/train_controller.dart';
-import 'package:gym_app/model/train_model.dart';
-import 'package:gym_app/view/utils/export_utils.dart';
-import 'package:sizer/sizer.dart';
+import 'package:gym_app/export.dart';
 
 class HelloPage extends StatefulWidget {
   const HelloPage({Key? key}) : super(key: key);

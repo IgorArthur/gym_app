@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:gym_app/export.dart';
 
 part 'train_model.g.dart';
 

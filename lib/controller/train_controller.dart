@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import 'package:gym_app/model/train_model.dart';
+import 'package:gym_app/export.dart';
 
 class TrainController extends GetxController {
   TrainModel train = TrainModel();

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:gym_app/model/profile_model.dart';
-import 'package:gym_app/view/utils/boxes.dart';
+import 'package:gym_app/export.dart';
 
 class ProfileController extends GetxController {
   ProfileController() {

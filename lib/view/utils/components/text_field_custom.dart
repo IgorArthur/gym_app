@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:gym_app/view/utils/app_colors.dart';
-import 'package:sizer/sizer.dart';
+import 'package:gym_app/export.dart';
 
 class TextFieldCustom extends StatelessWidget {
   const TextFieldCustom({
