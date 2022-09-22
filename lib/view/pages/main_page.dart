@@ -94,64 +94,6 @@ class _HelloPageState extends State<HelloPage> {
     );
   }
 
-  // Widget _content(MainController mainController) {
-  //   return GetBuilder<TrainController>(
-  //     init: TrainController(),
-  //     builder: (trainController) {
-  //       return Column(
-  //         children: [
-  //           Padding(
-  //             padding: EdgeInsets.only(top: 2.h),
-  //             child:
-  //                 Text('Treino de ${mainController.currentDayName}').subtitle(),
-  //           ),
-  //           mainController.trainList.isEmpty
-  //               ? Padding(
-  //                   padding: EdgeInsets.only(top: 10.h),
-  //                   child: const Text('Nenhum treino cadastrado para hoje.')
-  //                       .header(AppColors.neutral100),
-  //                 )
-  //               : Container(
-  //                   padding: EdgeInsets.symmetric(horizontal: 5.w),
-  //                   height: 57.h,
-  //                   child: ListView.builder(
-  //                     itemCount: mainController.trainList.length,
-  //                     itemBuilder: (BuildContext context, int index) {
-  //                       return Padding(
-  //                         padding: EdgeInsets.only(bottom: 2.h),
-  //                         child: MainTile(
-  //                           width: 85.w,
-  //                           height: 16.h,
-  //                           colorIndex: mainController.trainList[index].group,
-  //                           icon: mainController.trainList[index].title ==
-  //                                   'Aquecimento'
-  //                               ? Icons.directions_bike
-  //                               : Icons.fitness_center,
-  //                           iconColor: AppColors.neutral200,
-  //                           iconSize: 85,
-  //                           time: mainController.trainList[index].time,
-  //                           title: mainController.trainList[index].title,
-  //                           subtitle: mainController.trainList[index].type,
-  //                           clickable: mainController.trainList[index].title ==
-  //                                   'Aquecimento'
-  //                               ? false
-  //                               : true,
-  //                           onTap: () {
-  //                             trainController
-  //                               ..train = mainController.trainList[index]
-  //                               ..update();
-  //                           },
-  //                         ),
-  //                       );
-  //                     },
-  //                   ),
-  //                 ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
   Widget _content(MainController mainController) {
     return GetBuilder<TrainController>(
       init: TrainController(),
@@ -163,7 +105,7 @@ class _HelloPageState extends State<HelloPage> {
               child:
                   Text('Treino de ${mainController.currentDayName}').subtitle(),
             ),
-            mainController.train == null
+            trainController.train.exerciseList.isEmpty
                 ? Padding(
                     padding: EdgeInsets.only(top: 10.h),
                     child: const Text('Nenhum treino cadastrado para hoje.')
@@ -177,7 +119,8 @@ class _HelloPageState extends State<HelloPage> {
                       child: MainTile(
                         width: 85.w,
                         height: 16.h,
-                        colorIndex: mainController.train!.group,
+                        //colorIndex: mainController.train!.group,
+                        colorIndex: 0,
                         icon: mainController.train!.title == 'Aquecimento'
                             ? Icons.directions_bike
                             : Icons.fitness_center,
@@ -282,7 +225,7 @@ class _HelloPageState extends State<HelloPage> {
                                 .subtitle(),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 2.h),
+                            padding: EdgeInsets.only(top: 5.h),
                             child: Center(
                               child: TextButton(
                                 onPressed: () {
@@ -290,32 +233,16 @@ class _HelloPageState extends State<HelloPage> {
                                       .pushNamed('/profile_page');
                                 },
                                 child: Container(
+                                  height: 5.h,
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 1.w, vertical: 1.h),
-                                  decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: AppColors.neutral200),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(15)),
+                                      horizontal: 5.w, vertical: 1.h),
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.softBlue,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15)),
                                   ),
                                   child: const Text('Editar perfil').header(),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 1.w, vertical: 1.h),
-                                decoration: BoxDecoration(
-                                  border:
-                                      Border.all(color: AppColors.neutral200),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(15)),
-                                ),
-                                child: const Text('Cadastrar treino').header(),
                               ),
                             ),
                           ),

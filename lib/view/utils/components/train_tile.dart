@@ -49,12 +49,14 @@ class TrainTile extends StatelessWidget {
                 ).header()),
             SizedBox(
                 width: 0.2 * width,
-                child:
-                    Text('$weight kg', 
-                  overflow: TextOverflow.ellipsis,).body2(_getSecondaryColor(colorIndex))),
+                child: Text(
+                  '$weight kg',
+                  overflow: TextOverflow.ellipsis,
+                ).body2(_getSecondaryColor(colorIndex))),
             SizedBox(
               width: 0.25 * width,
               child: Container(
+                alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(
                   horizontal: (0.025 * width),
                 ),
@@ -63,17 +65,9 @@ class TrainTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white,
                 ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.timer,
-                      size: 0.057 * width,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 0.025 * width),
-                      child: Text('$sets x $reps').body2(),
-                    ),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0.025 * width),
+                  child: Text('$sets x $reps').body2(),
                 ),
               ),
             ),
@@ -81,7 +75,7 @@ class TrainTile extends StatelessWidget {
         ));
   }
 
-Color _getPrimaryColor(int colorIndex) {
+  Color _getPrimaryColor(int colorIndex) {
     switch (colorIndex) {
       case 0:
         return AppColors.softBlue;

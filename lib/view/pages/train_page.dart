@@ -96,7 +96,8 @@ class TrainPage extends StatelessWidget {
             return TrainTile(
               width: 84.w,
               height: 8.h,
-              colorIndex: trainController.train.exerciseList[index].group % 5,
+              //colorIndex: trainController.train.exerciseList[index].group % 5,
+              colorIndex: 0,
               title: trainController.train.exerciseList[index].title,
               weight: trainController.train.exerciseList[index].weight,
               sets: trainController.train.exerciseList[index].sets,

@@ -53,43 +53,68 @@ class _ProfilePageState extends State<ProfilePage> {
     BuildContext context,
     ProfileController profileController,
   ) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5.h),
-      child: TextButton(
-        onPressed: () {},
-        child: Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              height: 48.w,
-              width: 48.w,
-              decoration: BoxDecoration(
-                color: AppColors.neutral100,
-                borderRadius: BorderRadius.circular(24.w),
-              ),
-              child: Icon(
-                Icons.face,
-                size: 32.w,
+    return Column(
+      children: [
+        Container(
+          height: 12.7.h,
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 8.w),
+              child: const Icon(
+                Icons.arrow_back_ios,
                 color: AppColors.neutral200,
               ),
             ),
-            Container(
-              height: 10.w,
-              width: 10.w,
-              decoration: BoxDecoration(
-                color: AppColors.neutral0,
-                border: Border.all(color: AppColors.neutral200),
-                borderRadius: BorderRadius.circular(5.w),
-              ),
-              child: const Icon(
-                Icons.edit,
-                color: AppColors.neutral200,
-              ),
-            )
-          ],
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
-      ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 5.h),
+          child: TextButton(
+            onPressed: () {
+              
+            },
+            child: Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  height: 48.w,
+                  width: 48.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.neutral100,
+                    borderRadius: BorderRadius.circular(24.w),
+                  ),
+                  child: Icon(
+                    Icons.face,
+                    size: 32.w,
+                    color: AppColors.neutral200,
+                  ),
+                ),
+                Container(
+                  height: 10.w,
+                  width: 10.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.neutral0,
+                    border: Border.all(color: AppColors.neutral200),
+                    borderRadius: BorderRadius.circular(5.w),
+                  ),
+                  child: const Icon(
+                    Icons.edit,
+                    color: AppColors.neutral200,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -159,14 +184,17 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: EdgeInsets.only(top: 2.h),
             child: Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/edit_train_page');
+                },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.h),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.neutral200),
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  height: 5.h,
+                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
+                  decoration: const BoxDecoration(
+                    color: AppColors.softBlue,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
-                  child: const Text('Cadastrar treino').header(),
+                  child: const Text('Editar treinos').header(),
                 ),
               ),
             ),
