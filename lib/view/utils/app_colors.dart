@@ -1,10 +1,11 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class AppColors {
-
   static const Color neutral0 = Color.fromARGB(255, 247, 247, 247);
   static const Color neutral100 = Color.fromARGB(255, 193, 193, 193);
   static const Color neutral200 = Color.fromARGB(255, 0, 0, 0);
+
+  static const Color primary100 = Color.fromARGB(255, 255, 138, 54);
 
   static const Color softBlue = Color.fromARGB(255, 188, 216, 222);
   static const Color hardBlue = Color.fromARGB(255, 84, 145, 158);

@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class ProfileController extends GetxController {
   ProfileController() {

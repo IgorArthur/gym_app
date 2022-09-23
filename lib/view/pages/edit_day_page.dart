@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class EditDayPage extends StatefulWidget {
   const EditDayPage({Key? key}) : super(key: key);
@@ -9,10 +9,21 @@ class EditDayPage extends StatefulWidget {
 
 class _EditDayPageState extends State<EditDayPage> {
   @override
-  void dispose() {
-    super.dispose();
+  void initState() {
+    super.initState();
 
-    Get.find<ProfileController>().putInfo();
+    _getInfo();
+  }
+
+  void _getInfo() {
+    final controller = Get.find<TrainController>();
+    final index = controller.getDayIndex();
+
+    if (Boxes.getExercises().get(index) == null) {
+      controller.createExercises();
+    } else {
+      controller.loadExercises();
+    }
   }
 
   @override
@@ -80,7 +91,7 @@ class _EditDayPageState extends State<EditDayPage> {
             bottom: 3.3.h,
           ),
           alignment: Alignment.centerLeft,
-          child: Text('Editando treino de ${trainController.day}').title(),
+          child: Text('Editando treino de ${trainController.dayName}').title(),
         ),
       ],
     );
@@ -92,18 +103,22 @@ class _EditDayPageState extends State<EditDayPage> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
-          height: trainController.train.exerciseList.length * 9.6.h,
+          height: trainController.exerciseList.length * 9.6.h,
           child: ListView.builder(
-            itemCount: trainController.train.exerciseList.length,
+            itemCount: trainController.exerciseList.length,
             itemBuilder: (BuildContext context, int index) {
               return TrainTile(
                 width: 84.w,
-                height: 8.h,
-                colorIndex: trainController.train.exerciseList[index].group % 5,
-                title: trainController.train.exerciseList[index].title,
-                weight: trainController.train.exerciseList[index].weight,
-                sets: trainController.train.exerciseList[index].sets,
-                reps: trainController.train.exerciseList[index].reps,
+                height: 7.h,
+                colorIndex: 0,
+                title: trainController.exerciseList[index].title,
+                weight: trainController.exerciseList[index].weight,
+                sets: trainController.exerciseList[index].sets,
+                reps: trainController.exerciseList[index].reps,
+                hasDelete: true,
+                onClickDelete: () {
+                  trainController.removeExercise(index);
+                },
               );
             },
           ),
@@ -115,10 +130,6 @@ class _EditDayPageState extends State<EditDayPage> {
           ),
           onPressed: () {
             _showAddExerciseDialog(trainController);
-
-            // trainController
-            //   ..train.exerciseList.add(ExerciseModel())
-            //   ..update();
           },
           child: Container(
             height: 5.h,
@@ -242,6 +253,8 @@ class _EditDayPageState extends State<EditDayPage> {
             actions: [
               TextButton(
                 onPressed: () {
+                  trainController.addExercise();
+
                   Navigator.of(context).pop();
                 },
                 child: Container(

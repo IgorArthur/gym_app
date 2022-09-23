@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class TrainPage extends StatelessWidget {
   const TrainPage({Key? key}) : super(key: key);
@@ -91,17 +91,17 @@ class TrainPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 5.w),
       height: 78.h,
       child: ListView.builder(
-          itemCount: trainController.train.exerciseList.length,
+          itemCount: trainController.exerciseList.length,
           itemBuilder: (BuildContext context, int index) {
             return TrainTile(
               width: 84.w,
               height: 8.h,
               //colorIndex: trainController.train.exerciseList[index].group % 5,
               colorIndex: 0,
-              title: trainController.train.exerciseList[index].title,
-              weight: trainController.train.exerciseList[index].weight,
-              sets: trainController.train.exerciseList[index].sets,
-              reps: trainController.train.exerciseList[index].reps,
+              title: trainController.exerciseList[index].title,
+              weight: trainController.exerciseList[index].weight,
+              sets: trainController.exerciseList[index].sets,
+              reps: trainController.exerciseList[index].reps,
             );
           }),
     );

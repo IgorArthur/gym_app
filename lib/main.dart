@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -7,6 +7,8 @@ void main() async {
   await Hive.openBox<ProfileModel>('profile');
   Hive.registerAdapter(TrainModelAdapter());
   await Hive.openBox<TrainModel>('train');
+  Hive.registerAdapter(ExerciseModelAdapter());
+  await Hive.openBox<List<dynamic>>('exercises');
 
   Get.put(MainController());
   Get.put(ProfileController());

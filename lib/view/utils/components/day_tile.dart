@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class DayTile extends StatelessWidget {
   const DayTile({
@@ -22,7 +22,7 @@ class DayTile extends StatelessWidget {
       ),
       onPressed: () {
         Get.find<TrainController>()
-          ..day = day
+          ..dayName = day.removeAllWhitespace
           ..update();
 
         Navigator.of(context).pushNamed('/edit_day_page');

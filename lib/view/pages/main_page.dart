@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class HelloPage extends StatefulWidget {
   const HelloPage({Key? key}) : super(key: key);
@@ -105,7 +105,7 @@ class _HelloPageState extends State<HelloPage> {
               child:
                   Text('Treino de ${mainController.currentDayName}').subtitle(),
             ),
-            trainController.train.exerciseList.isEmpty
+            trainController.exerciseList.isEmpty
                 ? Padding(
                     padding: EdgeInsets.only(top: 10.h),
                     child: const Text('Nenhum treino cadastrado para hoje.')

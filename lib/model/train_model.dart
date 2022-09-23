@@ -1,10 +1,9 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 part 'train_model.g.dart';
 
 @HiveType(typeId: 1)
 class TrainModel extends HiveObject {
-
   @HiveField(0)
   late String title;
 
@@ -17,35 +16,8 @@ class TrainModel extends HiveObject {
   @HiveField(3)
   late int time;
 
-  @HiveField(4)
-  late List<ExerciseModel> exerciseList;
+  // @HiveField(4)
+  // late List<ExerciseModel> exerciseList;
 
   bool initialized = false;
 }
-
-class ExerciseModel {
-  late int group;
-  late String title;
-  late double weight;
-  late int sets;
-  late int reps;
-}
-
-// @HiveType(typeId: 2)
-// class ExerciseModel extends HiveObject {
-
-//   @HiveField(0)
-//   late int group;
-
-//   @HiveField(1)
-//   late String title;
-
-//   @HiveField(2)
-//   late double weight;
-
-//   @HiveField(3)
-//   late int sets;
-
-//   @HiveField(4)
-//   late int reps;
-// }

@@ -1,4 +1,4 @@
-import 'package:gym_app/export.dart';
+import 'package:gym_app/exports.dart';
 
 class EditTrainPage extends StatefulWidget {
   const EditTrainPage({Key? key}) : super(key: key);
@@ -104,7 +104,7 @@ class _EditTrainPageState extends State<EditTrainPage> {
                 width: 35.w,
                 height: 15.h,
                 colorIndex: 0,
-                day: 'Segunda-\n    feira',
+                day: 'Segunda-feira',
               )
             ],
           ),
@@ -115,13 +115,13 @@ class _EditTrainPageState extends State<EditTrainPage> {
                 width: 35.w,
                 height: 15.h,
                 colorIndex: 0,
-                day: 'Terça-\n feira',
+                day: 'Terça-feira',
               ),
               DayTile(
                 width: 35.w,
                 height: 15.h,
                 colorIndex: 0,
-                day: 'Quarta-\n   feira',
+                day: 'Quarta-feira',
               )
             ],
           ),
@@ -132,13 +132,13 @@ class _EditTrainPageState extends State<EditTrainPage> {
                 width: 35.w,
                 height: 15.h,
                 colorIndex: 0,
-                day: 'Quinta-\n   feira',
+                day: 'Quinta-feira',
               ),
               DayTile(
                 width: 35.w,
                 height: 15.h,
                 colorIndex: 0,
-                day: 'Sexta-\n  feira',
+                day: 'Sexta-feira',
               )
             ],
           ),

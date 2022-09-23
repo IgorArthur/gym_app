@@ -1,40 +1,43 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'train_model.dart';
+part of 'exercise_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TrainModelAdapter extends TypeAdapter<TrainModel> {
+class ExerciseModelAdapter extends TypeAdapter<ExerciseModel> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
-  TrainModel read(BinaryReader reader) {
+  ExerciseModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TrainModel()
-      ..title = fields[0] as String
-      ..type = fields[1] as String
-      ..group = fields[2] as int
-      ..time = fields[3] as int;
+    return ExerciseModel()
+      ..group = fields[0] as String
+      ..title = fields[1] as String
+      ..weight = fields[2] as double
+      ..sets = fields[3] as int
+      ..reps = fields[4] as int;
   }
 
   @override
-  void write(BinaryWriter writer, TrainModel obj) {
+  void write(BinaryWriter writer, ExerciseModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.title)
-      ..writeByte(1)
-      ..write(obj.type)
-      ..writeByte(2)
       ..write(obj.group)
+      ..writeByte(1)
+      ..write(obj.title)
+      ..writeByte(2)
+      ..write(obj.weight)
       ..writeByte(3)
-      ..write(obj.time);
+      ..write(obj.sets)
+      ..writeByte(4)
+      ..write(obj.reps);
   }
 
   @override
@@ -43,7 +46,7 @@ class TrainModelAdapter extends TypeAdapter<TrainModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is TrainModelAdapter &&
+      other is ExerciseModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
