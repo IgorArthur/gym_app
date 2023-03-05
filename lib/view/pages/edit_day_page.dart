@@ -17,13 +17,7 @@ class _EditDayPageState extends State<EditDayPage> {
 
   void _getInfo() {
     final controller = Get.find<TrainController>();
-    final index = controller.getDayIndex();
-
-    if (Boxes.getExercises().get(index) == null) {
-      controller.createExercises();
-    } else {
-      controller.loadExercises();
-    }
+    controller.getinfo();
   }
 
   @override
@@ -81,6 +75,9 @@ class _EditDayPageState extends State<EditDayPage> {
               ),
             ),
             onPressed: () {
+              Get.find<MainController>().loadInfo();
+              _getInfo();
+              
               Navigator.of(context).pop();
             },
           ),
@@ -136,7 +133,7 @@ class _EditDayPageState extends State<EditDayPage> {
             padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
             margin: EdgeInsets.only(right: 5.w),
             decoration: const BoxDecoration(
-              color: AppColors.softBlue,
+              color: AppColors.sucess100,
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             child: Row(
@@ -144,12 +141,12 @@ class _EditDayPageState extends State<EditDayPage> {
               children: [
                 Icon(
                   Icons.add,
-                  color: AppColors.neutral200,
+                  color: AppColors.neutral0,
                   size: 2.5.h,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 2.w),
-                  child: const Text('Exercício').header(),
+                  child: const Text('Exercício').header(AppColors.neutral0),
                 ),
               ],
             ),
@@ -189,7 +186,7 @@ class _EditDayPageState extends State<EditDayPage> {
                   valueSelect: trainController.groupNotifier,
                   values: const [
                     'Selecionar',
-                    'Abdôdem',
+                    'Abdômem',
                     'Bíceps',
                     'Costas',
                     'Glúteos',
@@ -261,7 +258,7 @@ class _EditDayPageState extends State<EditDayPage> {
                   height: 5.h,
                   padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
                   decoration: const BoxDecoration(
-                    color: AppColors.softBlue,
+                    color: AppColors.orange,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   child: const Text('Confirmar').header(),

@@ -22,6 +22,8 @@ class AppColors {
   static const Color softPurple = Color.fromARGB(255, 206, 165, 220);
   static const Color hardPurple = Color.fromARGB(255, 142, 88, 161);
 
+  static const Color orange = Color.fromARGB(255, 255, 170, 41);
+
   static const Color error100 = Color.fromARGB(255, 178, 70, 70);
 
   static const Color sucess100 = Color.fromARGB(255, 117, 178, 70);

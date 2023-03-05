@@ -58,26 +58,27 @@ class _EditTrainPageState extends State<EditTrainPage> {
         Container(
           height: 12.7.h,
           alignment: Alignment.centerLeft,
-          child: 
-            TextButton(
-                  style: ButtonStyle(
-                    padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 8.w),
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      color: AppColors.neutral200,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-          
+          child: TextButton(
+            style: ButtonStyle(
+              padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 8.w),
+              child: const Icon(
+                Icons.arrow_back_ios,
+                color: AppColors.neutral200,
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
         Container(
-          padding: EdgeInsets.only(left: 8.w, bottom: 3.3.h,),
+          padding: EdgeInsets.only(
+            left: 8.w,
+            bottom: 3.3.h,
+          ),
           alignment: Alignment.centerLeft,
           child: const Text('Editar treinos').title(),
         ),

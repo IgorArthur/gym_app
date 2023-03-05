@@ -68,7 +68,7 @@ class DayTile extends StatelessWidget {
   Color _getPrimaryColor(int colorIndex) {
     switch (colorIndex) {
       case 0:
-        return AppColors.softBlue;
+        return AppColors.orange;
       case 1:
         return AppColors.softRed;
       case 2:

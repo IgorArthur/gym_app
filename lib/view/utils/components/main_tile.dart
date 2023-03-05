@@ -11,7 +11,6 @@ class MainTile extends StatelessWidget {
     required this.iconSize,
     required this.time,
     required this.title,
-    required this.subtitle,
     required this.clickable,
     this.onTap,
   }) : super(key: key);
@@ -24,7 +23,6 @@ class MainTile extends StatelessWidget {
   final double iconSize;
   final int time;
   final String title;
-  final String subtitle;
   final bool clickable;
   final Function()? onTap;
 
@@ -102,7 +100,7 @@ class MainTile extends StatelessWidget {
   Color _getPrimaryColor(int colorIndex) {
     switch (colorIndex) {
       case 0:
-        return AppColors.softBlue;
+        return AppColors.orange;
       case 1:
         return AppColors.softRed;
       case 2:

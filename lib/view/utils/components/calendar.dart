@@ -98,7 +98,8 @@ class Calendar extends StatelessWidget {
               height: 2.1.w,
               width: 2.1.w,
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.hardBlue, width: 1.5),
+                //border: Border.all(color: AppColors.hardBlue, width: 1.5),
+                color: AppColors.sucess100,
                 borderRadius: BorderRadius.circular(1.05.w),
               ),
             )
@@ -128,12 +129,8 @@ class Calendar extends StatelessWidget {
   void _getInfo(int index) {
     trainController
       ..dayName = _getDayByIndex(index)
-      ..update();
+      ..update()
+      ..getinfo();
 
-    if (Boxes.getExercises().get(index) == null) {
-      trainController.createExercises();
-    } else {
-      trainController.loadExercises();
-    }
   }
 }

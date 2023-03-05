@@ -18,21 +18,15 @@ class TrainModelAdapter extends TypeAdapter<TrainModel> {
     };
     return TrainModel()
       ..title = fields[0] as String
-      ..type = fields[1] as String
-      ..group = fields[2] as int
       ..time = fields[3] as int;
   }
 
   @override
   void write(BinaryWriter writer, TrainModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.title)
-      ..writeByte(1)
-      ..write(obj.type)
-      ..writeByte(2)
-      ..write(obj.group)
       ..writeByte(3)
       ..write(obj.time);
   }

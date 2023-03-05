@@ -77,9 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
         Padding(
           padding: EdgeInsets.only(bottom: 5.h),
           child: TextButton(
-            onPressed: () {
-              
-            },
+            onPressed: () {},
             child: Stack(
               alignment: Alignment.bottomRight,
               children: [
@@ -182,20 +180,20 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           Padding(
             padding: EdgeInsets.only(top: 2.h),
-            child: Center(
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/edit_train_page');
-                },
-                child: Container(
-                  height: 5.h,
-                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
-                  decoration: const BoxDecoration(
-                    color: AppColors.softBlue,
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: const Text('Editar treinos').header(),
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/edit_train_page');
+              },
+              child: Container(
+                height: 5.h,
+                width: 45.w,
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: AppColors.orange,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
+                child: const Text('Editar treinos').header(),
               ),
             ),
           ),

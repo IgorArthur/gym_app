@@ -1,7 +1,6 @@
 import 'package:gym_app/exports.dart';
 
 class TrainController extends GetxController {
-
   TrainModel train = TrainModel();
   List<ExerciseModel> exerciseList = <ExerciseModel>[];
 
@@ -15,16 +14,26 @@ class TrainController extends GetxController {
 
   // Initialization Methods
 
-  void createExercises() {
+  void getinfo() {
+    final index = getDayIndex();
+
+    if (Boxes.getExercises().get(index) == null) {
+      _createExercises();
+    } else {
+      _loadExercises();
+    }
+  }
+
+  void _createExercises() {
     var index = getDayIndex();
     var exerciseList = <ExerciseModel>[];
 
     Boxes.getExercises().put(index, exerciseList);
 
-    loadExercises();
+    _loadExercises();
   }
 
-  void loadExercises() {
+  void _loadExercises() {
     var index = getDayIndex();
 
     exerciseList = Boxes.getExercises().get(index)!.cast<ExerciseModel>();
@@ -43,6 +52,8 @@ class TrainController extends GetxController {
       ..reps = int.parse(repsController.text);
 
     exerciseList.add(exercise);
+
+    _modifyTrainInfo();
 
     _clearFields();
 
@@ -64,7 +75,53 @@ class TrainController extends GetxController {
 
     Boxes.getExercises().put(index, exerciseList);
 
-    loadExercises();
+    _loadExercises();
+  }
+
+  void _modifyTrainInfo() {
+    final groupList = [];
+
+    for (final exercise in exerciseList) {
+      groupList.add(exercise.group);
+    }
+
+    var popular = {};
+
+    for (var exercise in groupList) {
+      if (!popular.containsKey(exercise)) {
+        popular[exercise] = 1;
+      } else {
+        popular[exercise] += 1;
+      }
+    }
+
+    var sortedByValueMap = Map.fromEntries(popular.entries.toList()
+      ..sort((e1, e2) => e2.value.compareTo(e1.value)));
+
+    var title = '';
+
+    if (sortedByValueMap.length > 1) {
+      title =
+          '${sortedByValueMap.keys.toList()[0]} e ${sortedByValueMap.keys.toList()[1]}';
+    } else {
+      if (sortedByValueMap.length == 1) {
+        title = '${sortedByValueMap.keys.toList()[0]}';
+      }
+    }
+
+    final duration = sortedByValueMap.length * 5;
+
+    var index = getDayIndex();
+
+    final newTrain = TrainModel();
+
+    newTrain
+      ..title = title
+      ..time = duration;
+
+    Boxes.getTrains().put(index, newTrain);
+
+    update();
   }
 
   // Auxiliar Methods

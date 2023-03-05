@@ -3,9 +3,9 @@ import 'package:gym_app/exports.dart';
 extension AppFonts on Text {
 
   Text title([Color? color]) {
-    final TextStyle textStyle = GoogleFonts.itim(
+    final TextStyle textStyle = GoogleFonts.jetBrainsMono(
       fontWeight: FontWeight.w400,
-      fontSize: 2.7.h,
+      fontSize: 2.2.h,
       color: color ?? AppColors.neutral200);
     return Text(data!, 
       style: textStyle.merge(style),
@@ -13,9 +13,9 @@ extension AppFonts on Text {
   }
 
   Text subtitle([Color? color]) {
-    final TextStyle textStyle = GoogleFonts.itim(
+    final TextStyle textStyle = GoogleFonts.jetBrainsMono(
       fontWeight: FontWeight.w400,
-      fontSize: 2.4.h,
+      fontSize: 1.9.h,
       color: color ?? AppColors.neutral200);
     return Text(data!, 
       style: textStyle.merge(style),
@@ -23,9 +23,9 @@ extension AppFonts on Text {
   }
 
   Text header([Color? color]) {
-    final TextStyle textStyle = GoogleFonts.itim(
+    final TextStyle textStyle = GoogleFonts.jetBrainsMono(
       fontWeight: FontWeight.w400,
-      fontSize: 2.2.h,
+      fontSize: 1.6.h,
       color: color ?? AppColors.neutral200);
     return Text(data!, 
       style: textStyle.merge(style),
@@ -43,7 +43,7 @@ extension AppFonts on Text {
   }
 
   Text body2([Color? color]) {
-    final TextStyle textStyle = GoogleFonts.itim(
+    final TextStyle textStyle = GoogleFonts.jetBrainsMono(
       fontWeight: FontWeight.w400,
       fontSize: 1.7.h,
       color: color ?? AppColors.neutral200);

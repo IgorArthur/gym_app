@@ -109,7 +109,7 @@ class TrainTile extends StatelessWidget {
   Color _getPrimaryColor(int colorIndex) {
     switch (colorIndex) {
       case 0:
-        return AppColors.softBlue;
+        return AppColors.orange;
       case 1:
         return AppColors.softRed;
       case 2:
@@ -124,7 +124,7 @@ class TrainTile extends StatelessWidget {
   Color _getSecondaryColor(int colorIndex) {
     switch (colorIndex) {
       case 0:
-        return AppColors.hardBlue;
+        return AppColors.neutral200;
       case 1:
         return AppColors.hardRed;
       case 2:

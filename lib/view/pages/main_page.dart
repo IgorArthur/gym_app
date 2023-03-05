@@ -8,7 +8,6 @@ class HelloPage extends StatefulWidget {
 }
 
 class _HelloPageState extends State<HelloPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,13 +122,12 @@ class _HelloPageState extends State<HelloPage> {
               )
             : Container(
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
-                height: 57.h,
+                height: 30.h,
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 2.h),
                   child: MainTile(
                     width: 85.w,
                     height: 16.h,
-                    //colorIndex: mainController.train!.group,
                     colorIndex: 0,
                     icon: mainController.train!.title == 'Aquecimento'
                         ? Icons.directions_bike
@@ -138,7 +136,6 @@ class _HelloPageState extends State<HelloPage> {
                     iconSize: 85,
                     time: mainController.train!.time,
                     title: mainController.train!.title,
-                    subtitle: mainController.train!.type,
                     clickable: mainController.train!.title == 'Aquecimento'
                         ? false
                         : true,
@@ -242,13 +239,15 @@ class _HelloPageState extends State<HelloPage> {
                                 },
                                 child: Container(
                                   height: 5.h,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5.w, vertical: 1.h),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 5.w),
                                   decoration: const BoxDecoration(
-                                    color: AppColors.softBlue,
+                                    color: AppColors.orange,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15)),
                                   ),
+                                  width: 45.w,
+                                  alignment: Alignment.center,
                                   child: const Text('Editar perfil').header(),
                                 ),
                               ),

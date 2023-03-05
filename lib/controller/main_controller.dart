@@ -2,7 +2,6 @@ import 'package:gym_app/exports.dart';
 import 'package:intl/intl.dart';
 
 class MainController extends GetxController {
-
   int currentDayIndex = 0;
   String currentDayName = '';
 
@@ -11,6 +10,10 @@ class MainController extends GetxController {
   // Initialization Methods
 
   MainController() {
+    loadInfo();
+  }
+
+  loadInfo() {
     if (Boxes.getTrains().isEmpty) {
       _createTrain();
     } else {
@@ -21,50 +24,36 @@ class MainController extends GetxController {
   void _createTrain() {
     var train0 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(0, train0);
 
     var train1 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(1, train1);
 
     var train2 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(2, train2);
 
     var train3 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(3, train3);
 
     var train4 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(4, train4);
 
     var train5 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(5, train5);
 
     var train6 = TrainModel()
       ..title = ''
-      ..type = ''
-      ..group = 0
       ..time = 0;
     Boxes.getTrains().put(6, train6);
 
