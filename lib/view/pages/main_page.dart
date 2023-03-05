@@ -8,6 +8,7 @@ class HelloPage extends StatefulWidget {
 }
 
 class _HelloPageState extends State<HelloPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,21 +29,28 @@ class _HelloPageState extends State<HelloPage> {
     return GetBuilder<MainController>(
       init: MainController(),
       builder: (mainController) {
-        return Column(
-          children: [
-            _header(
-              mainController,
-              context,
-            ),
-            _content(mainController),
-          ],
-        );
+        return GetBuilder<TrainController>(builder: (trainController) {
+          return Column(
+            children: [
+              _header(
+                mainController,
+                trainController,
+                context,
+              ),
+              _content(
+                mainController,
+                trainController,
+              ),
+            ],
+          );
+        });
       },
     );
   }
 
   Widget _header(
     MainController mainController,
+    TrainController trainController,
     BuildContext context,
   ) {
     return Column(
@@ -86,7 +94,10 @@ class _HelloPageState extends State<HelloPage> {
                 alignment: Alignment.centerLeft,
                 child: const Text('Olá, Igor').title(),
               ),
-              Calendar(controller: mainController),
+              Calendar(
+                mainController: mainController,
+                trainController: trainController,
+              ),
             ],
           ),
         ),
@@ -94,55 +105,52 @@ class _HelloPageState extends State<HelloPage> {
     );
   }
 
-  Widget _content(MainController mainController) {
-    return GetBuilder<TrainController>(
-      init: TrainController(),
-      builder: (trainController) {
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 2.h),
-              child:
-                  Text('Treino de ${mainController.currentDayName}').subtitle(),
-            ),
-            trainController.exerciseList.isEmpty
-                ? Padding(
-                    padding: EdgeInsets.only(top: 10.h),
-                    child: const Text('Nenhum treino cadastrado para hoje.')
-                        .header(AppColors.neutral100),
-                  )
-                : Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    height: 57.h,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 2.h),
-                      child: MainTile(
-                        width: 85.w,
-                        height: 16.h,
-                        //colorIndex: mainController.train!.group,
-                        colorIndex: 0,
-                        icon: mainController.train!.title == 'Aquecimento'
-                            ? Icons.directions_bike
-                            : Icons.fitness_center,
-                        iconColor: AppColors.neutral200,
-                        iconSize: 85,
-                        time: mainController.train!.time,
-                        title: mainController.train!.title,
-                        subtitle: mainController.train!.type,
-                        clickable: mainController.train!.title == 'Aquecimento'
-                            ? false
-                            : true,
-                        onTap: () {
-                          trainController
-                            ..train = mainController.train!
-                            ..update();
-                        },
-                      ),
-                    ),
+  Widget _content(
+    MainController mainController,
+    TrainController trainController,
+  ) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 2.h),
+          child: Text('Treino de ${mainController.currentDayName}').subtitle(),
+        ),
+        trainController.exerciseList.isEmpty
+            ? Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: const Text('Nenhum treino cadastrado para hoje.')
+                    .header(AppColors.neutral100),
+              )
+            : Container(
+                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                height: 57.h,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 2.h),
+                  child: MainTile(
+                    width: 85.w,
+                    height: 16.h,
+                    //colorIndex: mainController.train!.group,
+                    colorIndex: 0,
+                    icon: mainController.train!.title == 'Aquecimento'
+                        ? Icons.directions_bike
+                        : Icons.fitness_center,
+                    iconColor: AppColors.neutral200,
+                    iconSize: 85,
+                    time: mainController.train!.time,
+                    title: mainController.train!.title,
+                    subtitle: mainController.train!.type,
+                    clickable: mainController.train!.title == 'Aquecimento'
+                        ? false
+                        : true,
+                    onTap: () {
+                      trainController
+                        ..train = mainController.train!
+                        ..update();
+                    },
                   ),
-          ],
-        );
-      },
+                ),
+              ),
+      ],
     );
   }
 

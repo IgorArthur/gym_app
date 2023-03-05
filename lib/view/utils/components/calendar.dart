@@ -3,10 +3,12 @@ import 'package:gym_app/exports.dart';
 class Calendar extends StatelessWidget {
   const Calendar({
     Key? key,
-    required this.controller,
+    required this.mainController,
+    required this.trainController,
   }) : super(key: key);
 
-  final MainController controller;
+  final MainController mainController;
+  final TrainController trainController;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +37,13 @@ class Calendar extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _dayCheck(0, controller.currentDayIndex),
-                _dayCheck(1, controller.currentDayIndex),
-                _dayCheck(2, controller.currentDayIndex),
-                _dayCheck(3, controller.currentDayIndex),
-                _dayCheck(4, controller.currentDayIndex),
-                _dayCheck(5, controller.currentDayIndex),
-                _dayCheck(6, controller.currentDayIndex),
+                _dayCheck(0, mainController.currentDayIndex),
+                _dayCheck(1, mainController.currentDayIndex),
+                _dayCheck(2, mainController.currentDayIndex),
+                _dayCheck(3, mainController.currentDayIndex),
+                _dayCheck(4, mainController.currentDayIndex),
+                _dayCheck(5, mainController.currentDayIndex),
+                _dayCheck(6, mainController.currentDayIndex),
               ],
             ),
           )
@@ -78,7 +80,9 @@ class Calendar extends StatelessWidget {
           padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
         ),
         onPressed: () {
-          controller.changeCurrentDay(index);
+          mainController.changeCurrentDay(index);
+
+          _getInfo(index);
         },
         child: Text(title).subtitle(),
       ),
@@ -100,5 +104,36 @@ class Calendar extends StatelessWidget {
             )
           : const SizedBox(),
     );
+  }
+
+  String _getDayByIndex(int index) {
+    switch (index) {
+      case 1:
+        return 'Segunda-feira';
+      case 2:
+        return 'Terça-feira';
+      case 3:
+        return 'Quarta-feira';
+      case 4:
+        return 'Quinta-feira';
+      case 5:
+        return 'Sexta-feira';
+      case 6:
+        return 'Sábado';
+      default:
+        return 'Domingo';
+    }
+  }
+
+  void _getInfo(int index) {
+    trainController
+      ..dayName = _getDayByIndex(index)
+      ..update();
+
+    if (Boxes.getExercises().get(index) == null) {
+      trainController.createExercises();
+    } else {
+      trainController.loadExercises();
+    }
   }
 }

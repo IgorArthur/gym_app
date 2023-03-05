@@ -12,6 +12,7 @@ void main() async {
 
   Get.put(MainController());
   Get.put(ProfileController());
+  Get.put(TrainController());
 
   runApp(const MyApp());
 }
